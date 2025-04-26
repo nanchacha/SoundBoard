@@ -53,6 +53,14 @@ button .label {
   font-size: 1.5rem;
 }
 
+/* 기존 button 스타일 밑에 추가하세요 */
+button.pressed {
+  transform: scale(0.95);
+  /* 활성화 시 배경도 살짝 어두워지게 하고 싶으면 아래 줄 사용 */
+  background: #e0e0e0;
+}
+
+
 /* 중간 사이즈 (태블릿) */
 @media (max-width: 768px) {
   .grid {
