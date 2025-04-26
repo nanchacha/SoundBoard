@@ -8,6 +8,26 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 4rem 1rem 1rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 200;
+}
+
+.donate-button img {
+  height: 40px;      /* 버튼 높이 조절 */
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.donate-button img:hover {
+  transform: scale(1.05);
 }
 
 h1 {
