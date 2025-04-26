@@ -1,20 +1,31 @@
-const buttons     = document.querySelectorAll('button[data-sound]');
-let currentAudio  = null;
+// script.js
+const buttons       = document.querySelectorAll('button[data-sound]');
+let currentAudio    = null;
+const isTouchDevice = 'ontouchstart' in window;
 
 buttons.forEach(btn => {
-  const audio = new Audio(`sounds/${btn.dataset.sound}`);
-  audio.load();  // 미리 로드
+  const soundFile = btn.dataset.sound;               // ex) "cow.mp3"
+  const audio     = new Audio(`sounds/${soundFile}`);
+  audio.load();
 
-  btn.addEventListener('pointerdown', e => {
-    e.preventDefault();           // 터치→클릭 이중 호출 방지
-    // 이전 소리 중단
+  const playSound = e => {
+    // 터치 디바이스에서는 기본 클릭 이벤트 방지
+    if (e.cancelable) e.preventDefault();
+
+    // 이전 사운드 정리
     if (currentAudio && currentAudio !== audio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
-    // 새 소리 재생
+
     currentAudio = audio;
     audio.currentTime = 0;
-    audio.play();
-  });
+    audio.play().catch(console.error);
+  };
+
+  if (isTouchDevice) {
+    btn.addEventListener('touchend', playSound);
+  } else {
+    btn.addEventListener('click', playSound);
+  }
 });
