@@ -108,3 +108,27 @@ button.pressed {
   button .emoji { font-size: 2rem; }
   button .label { font-size: 1rem; }
 }
+
+/* ────────────────────────────────
+   반응형: Buy Me a Coffee 버튼
+───────────────────────────────── */
+
+/* 태블릿 이하 */
+@media (max-width: 768px) {
+  header {
+    padding: 0.5rem;       /* 헤더 여백 축소 */
+  }
+  .donate-button img {
+    height: 30px;          /* 버튼 높이 축소 */
+  }
+}
+
+/* 모바일 (작은 화면) */
+@media (max-width: 480px) {
+  header {
+    padding: 0.3rem;       /* 더 작은 여백 */
+  }
+  .donate-button img {
+    height: 24px;          /* 모바일에 최적화된 버튼 크기 */
+  }
+}
