@@ -1,14 +1,14 @@
-/* 기본 스타일 (데스크탑용) */
+/* ─────────────────────────────────────────────────────────
+   기본 스타일 (데스크탑용)
+───────────────────────────────────────────────────────── */
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 1rem;
+  padding: 4rem 1rem 1rem; /* 헤더 공간 포함 */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: 4rem 1rem 1rem;
 }
 
 header {
@@ -20,7 +20,7 @@ header {
 }
 
 .donate-button img {
-  height: 40px;      /* 버튼 높이 조절 */
+  height: 40px;
   width: auto;
   cursor: pointer;
   transition: transform 0.1s ease;
@@ -59,80 +59,34 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.1s ease, background 0.2s ease;
-}
-button:hover { background: #e0e0e0; }
-button:active { transform: scale(0.95); }
-
-button .emoji {
-  font-size: 3rem;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-button .label {
-  font-size: 1.5rem;
+  transition: transform .1s ease, background .2s ease;
 }
 
-/* 기존 button 스타일 밑에 추가하세요 */
-button.pressed {
-  transform: scale(0.95);
-  /* 활성화 시 배경도 살짝 어두워지게 하고 싶으면 아래 줄 사용 */
+button:hover {
   background: #e0e0e0;
 }
 
-
-/* 중간 사이즈 (태블릿) */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-  button {
-    max-width: 250px;
-    height: 150px;
-  }
-  button .emoji { font-size: 2.5rem; }
-  button .label { font-size: 1.25rem; }
+/* 눌리는 효과 */
+button.pressed {
+  transform: scale(0.95);
+  background: #e0e0e0;
 }
 
-/* 작은 화면 (모바일) */
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-  }
-  button {
-    max-width: 180px;
-    height: 120px;
-  }
-  button .emoji { font-size: 2rem; }
-  button .label { font-size: 1rem; }
+/* 아이콘(<img>) 스타일 */
+button .icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: .5rem;
 }
 
-/* ────────────────────────────────
-   반응형: Buy Me a Coffee 버튼
-───────────────────────────────── */
-
-/* 태블릿 이하 */
-@media (max-width: 768px) {
-  header {
-    padding: 0.5rem;       /* 헤더 여백 축소 */
-  }
-  .donate-button img {
-    height: 30px;          /* 버튼 높이 축소 */
-  }
+/* 레이블 텍스트 */
+button .label {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* 모바일 (작은 화면) */
-@media (max-width: 480px) {
-  header {
-    padding: 0.3rem;       /* 더 작은 여백 */
-  }
-  .donate-button img {
-    height: 24px;          /* 모바일에 최적화된 버튼 크기 */
-  }
-}
-
+/* 전체화면 버튼 */
 .fs-button {
   position: fixed;
   bottom: 1rem;
@@ -145,4 +99,60 @@ button.pressed {
   background: #ffc107;
   cursor: pointer;
   z-index: 100;
+}
+
+/* ─────────────────────────────────────────────────────────
+   반응형: 태블릿 이하
+───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  button {
+    max-width: 250px;
+    height: 150px;
+  }
+  button .icon {
+    width: 60px;
+    height: 60px;
+  }
+  button .label {
+    font-size: 1.25rem;
+  }
+
+  header {
+    padding: .5rem;
+  }
+  .donate-button img {
+    height: 30px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   반응형: 모바일
+───────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  button {
+    max-width: 180px;
+    height: 120px;
+  }
+  button .icon {
+    width: 48px;
+    height: 48px;
+  }
+  button .label {
+    font-size: 1rem;
+  }
+
+  header {
+    padding: .3rem;
+  }
+  .donate-button img {
+    height: 24px;
+  }
 }

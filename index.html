@@ -4,48 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Soundboard</title>
-  <link rel="stylesheet" href="styles.css" />  
-  <button id="enterFullscreen" class="fs-button">탭하여 전체 화면 모드 시작</button>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- 헤더에 도네이션 버튼 추가 -->
-    <header>
-      <a class="donate-button" href="https://www.buymeacoffee.com/eson" target="_blank">
-        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-             alt="Buy Me A Coffee" />
-      </a>
-    </header>
+  <!-- 전체화면 진입 버튼 -->
+  <button id="enterFullscreen" class="fs-button">탭하여 전체 화면 모드 시작</button>
+
+  <!-- 헤더: 도네이션 버튼 -->
+  <header>
+    <a class="donate-button" href="https://www.buymeacoffee.com/eson" target="_blank">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+           alt="Buy Me A Coffee" />
+    </a>
+  </header>
+
   <h1>사운드보드</h1>
-  
 
   <div class="grid">
-    <!-- 기존 버튼들 -->
+    <!-- 강아지 버튼 -->
     <button data-sound="dog.mp3">
-      <span class="emoji">🐶</span>
+      <img class="icon" src="images/dog.png" alt="강아지" />
       <span class="label">멍멍</span>
     </button>
+
+    <!-- 고양이 버튼 -->
     <button data-sound="cat.mp3">
-      <span class="emoji">🐱</span>
+      <img class="icon" src="images/cat.png" alt="고양이" />
       <span class="label">야옹</span>
     </button>
+
+    <!-- 소 버튼 -->
     <button data-sound="cow.mp3">
-      <span class="emoji">🐮</span>
+      <img class="icon" src="images/cow.png" alt="소" />
       <span class="label">음메</span>
     </button>
 
+    <!-- 소방차 버튼 -->
     <button data-sound="firetruck.mp3">
-        <span class="emoji">🚒</span>
-        <span class="label">소방차</span>
-      </button>
+      <img class="icon" src="images/firetruck.png" alt="소방차" />
+      <span class="label">소방차</span>
+    </button>
+
+    <!-- 기차 버튼 -->
     <button data-sound="train.mp3">
-      <span class="emoji">🚂</span>
+      <img class="icon" src="images/train.png" alt="기차" />
       <span class="label">기차</span>
     </button>
+
+    <!-- 자동차 버튼 -->
     <button data-sound="car.mp3">
-      <span class="emoji">🚗</span>
+      <img class="icon" src="images/car.png" alt="자동차" />
       <span class="label">자동차</span>
     </button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
