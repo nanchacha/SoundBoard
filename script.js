@@ -1,11 +1,11 @@
-const buttons       = document.querySelectorAll('button[data-sound]');
-let currentAudio    = null;
-const isTouchDevice = 'ontouchstart' in window;
+const buttons    = document.querySelectorAll('button[data-sound]');
+let currentAudio = null;
 
 buttons.forEach(btn => {
-  const soundFile = btn.dataset.sound;
-  const audio     = new Audio(`sounds/${soundFile}`);
+  const audio     = new Audio(`sounds/${btn.dataset.sound}`);
   audio.load();
+
+  let removeTimer;
 
   const playSound = e => {
     e.preventDefault();
@@ -19,20 +19,26 @@ buttons.forEach(btn => {
     audio.play().catch(console.error);
   };
 
-  // Press 효과 주기
-  const addPress = () => btn.classList.add('pressed');
-  const removePress = () => btn.classList.remove('pressed');
+  const addPress = () => {
+    clearTimeout(removeTimer);
+    btn.classList.add('pressed');
+  };
+  const removePress = () => {
+    // 80ms 뒤에 클래스 제거 → 최소 한두 프레임 유지
+    removeTimer = setTimeout(() => {
+      btn.classList.remove('pressed');
+    }, 80);
+  };
 
-  if (isTouchDevice) {
-    btn.addEventListener('touchstart', addPress);
-    btn.addEventListener('touchend', removePress);
-    btn.addEventListener('touchend', playSound);
-    // 혹시 터치가 취소될 때도 효과 해제
-    btn.addEventListener('touchcancel', removePress);
-  } else {
-    btn.addEventListener('mousedown', addPress);
-    btn.addEventListener('mouseup', removePress);
-    btn.addEventListener('mouseleave', removePress);
-    btn.addEventListener('click', playSound);
-  }
+  // Pointer Events로 통합 처리 (모바일/데스크탑 공통)
+  btn.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    addPress();
+  });
+  btn.addEventListener('pointerup', e => {
+    playSound(e);
+    removePress();
+  });
+  btn.addEventListener('pointercancel', removePress);
+  btn.addEventListener('pointerleave', removePress);
 });
