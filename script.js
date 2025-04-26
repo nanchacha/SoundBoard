@@ -5,7 +5,8 @@ buttons.forEach(btn => {
   const audio = new Audio(`sounds/${btn.dataset.sound}`);
   audio.load();  // 미리 로드
 
-  const playSound = () => {
+  btn.addEventListener('pointerdown', e => {
+    e.preventDefault();           // 터치→클릭 이중 호출 방지
     // 이전 소리 중단
     if (currentAudio && currentAudio !== audio) {
       currentAudio.pause();
@@ -15,8 +16,5 @@ buttons.forEach(btn => {
     currentAudio = audio;
     audio.currentTime = 0;
     audio.play();
-  };
-
-  btn.addEventListener('click', playSound);
-  btn.addEventListener('touchstart', playSound);
+  });
 });
