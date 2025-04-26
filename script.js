@@ -42,3 +42,17 @@ buttons.forEach(btn => {
   btn.addEventListener('pointercancel', removePress);
   btn.addEventListener('pointerleave', removePress);
 });
+
+const fsBtn = document.getElementById('enterFullscreen');
+fsBtn.addEventListener('click', () => {
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+  fsBtn.style.display = 'none'; // 한번만 표시
+});
+
